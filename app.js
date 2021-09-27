@@ -4,8 +4,17 @@ const timeList = document.querySelector('#time-list')
 const timeEl = document.querySelector('#time')
 const board = document.querySelector('#board')
 const colors = ['brown', 'orange', 'white', 'green', 'yellow', 'red', 'blue', 'purple']
+const restartBtn = document.querySelector('.restart-button')
+const btnRestart = document.querySelector('#restart')
+const showScore = document.querySelector('#showscore')
+let timer
 let time = 0
 let score = 0
+board.innerHTML = ''
+
+//restartBtn.addEventListener('click', () => {
+//    goBack()
+//})
 
 startBtn.addEventListener('click', (event) => {
     event.preventDefault()
@@ -14,10 +23,14 @@ startBtn.addEventListener('click', (event) => {
 
 timeList.addEventListener('click', event => {
     if (event.target.classList.contains('time-btn')) {
+        timeEl.parentNode.classList.remove('hide')
+
         time = parseInt(event.target.getAttribute('data-time'))
         screens[1].classList.add('up')
+        //clearInterval(timer)
         startGame()
-    }
+        //board.innerHTML = ''
+    }//
 })
 
 board.addEventListener('click', event => {
@@ -27,19 +40,37 @@ board.addEventListener('click', event => {
         createRandomCircle()
     }
 })
+btnRestart.addEventListener('click', () => {
+    goBack()
+    //board.innerHTML = ''
+
+    //time = parseInt(timeList.target.getAttribute('data-time'))
 
 
 
+})
+console.log(btnRestart)
+
+
+//showScore.innerHTML = `${score}`
 function startGame() {
     //screens[1].classList.add('up')
-    setInterval(decreaseTime, 1000)
+    //showScore.innerHTML = `${score}`
+    //let timer = setInterval(decreaseTime, 1000)
+    board.innerHTML = ''
+    clearInterval(timer)
+    timer = setInterval(decreaseTime, 1000)
+    setInterval(scoreShow, 10)
     createRandomCircle()
     setTime(time)
+
 }
 
 function decreaseTime() {
     if (time === 0) {
         finishGame()
+        setTime(0)
+
     } else {
         let current = --time
         if (current < 10) {
@@ -51,18 +82,39 @@ function decreaseTime() {
 }
 
 function setTime(value) {
+    //showScore.innerHTML = `${score}`
     if (time < 60) {
         timeEl.innerHTML = `00:${value}`
     } else {
         timeEl.innerHTML = '01:00'
     }
+    scoreShow()
+
 
 }
+function scoreShow() {
+    showScore.innerHTML = `${score}`
+}
+
+
 
 function finishGame() {
     timeEl.parentNode.classList.add('hide')
-    board.innerHTML = `<h1>Your score: <span class="primary">${score}</span></h1>`
+    //setTime(time * 4)
+    //btnRestart.classList.remove('hide')
+
+
+    board.innerHTML = `<h1 class="unhide">Your score: <span class="primary">${score}</span></h1>`
+
+
+
+
+
+    //buttonRestart.goBack()
+    //restartBtn.classList.remove('hide')
+    //board.innerHTML = `<h2>Restart</h2>`
 }
+
 
 function createRandomCircle() {
     const circle = document.createElement('div')
@@ -90,4 +142,15 @@ function getRandomNumber(min, max) {
 function randColor() {
     const index = Math.floor(Math.random() * colors.length)
     return colors[index]
+}
+
+function goBack() {
+    //time = time * 2
+
+    score = 0
+    screens[1].classList.remove('up')
+    //board.innerHTML = 'bbb'
+    timeEl.parentNode.classList.remove('hide')
+    const haha = board.childNodes.classList.add('hide')
+    console.log(haha)
 }
