@@ -31,19 +31,32 @@
         <button class="time-btn" data-time="30">
           30 сек
         </button>
+      </li>
       <li>
         <button class="time-btn" data-time="60">
           1 мин
         </button>
       </li>
 
-      </li>
+
     </ul>
   </div>
 
   <div class="screen">
-    <h3>Осталось <span id="time">00:00</span></h3>
-    <div class="board" id="board"></div>
+    <h3> <span>
+        Осталось <span id="time">00:00</span> | |
+        Score:
+        <span id="showscore" class="score">0</span> | |
+      </span>
+      <span id="restart" class="restart-btn">Restart</span>
+    </h3>
+
+
+    <div class="board" id="board">
+
+
+
+    </div>
   </div>
   <script src="app.js"></script>
 </body>
