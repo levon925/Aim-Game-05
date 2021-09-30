@@ -32,6 +32,19 @@ startBtn.addEventListener('click', (event) => {
     //console.log(name)
     //console.log(namevalue)
 })
+name.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault()
+        screens[0].classList.add('up')
+
+        let namevalue = name.value
+        name.classList.add('up')
+        if (namevalue === '') {
+            namevalue = 'Guest'
+        }
+        gamerName.innerHTML = namevalue
+    }
+})
 
 gamerName.addEventListener('click', () => {
     screens[0].classList.remove('up')
