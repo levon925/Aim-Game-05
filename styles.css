@@ -114,13 +114,16 @@ h1 {
 }
 
 .input-name{
-  top:55%;
+  /*
+  top:55%; */
   outline: none;
   border:none;
   color:white;
   border-bottom: 1px solid white;
   background: none;
-  position: absolute;
+  /*position: absolute;
+  */
+
 }
 
 .input-name:hover{
