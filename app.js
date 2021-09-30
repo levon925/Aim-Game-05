@@ -7,9 +7,12 @@ const colors = ['brown', 'orange', 'white', 'green', 'yellow', 'red', 'blue', 'p
 const restartBtn = document.querySelector('.restart-button')
 const btnRestart = document.querySelector('#restart')
 const showScore = document.querySelector('#showscore')
+const gamerName = document.querySelector('#gamer-name')
+let name = document.querySelector('.input-name')
 let timer
 let time = 0
 let score = 0
+let bestScore = 0
 board.innerHTML = ''
 
 //restartBtn.addEventListener('click', () => {
@@ -19,6 +22,21 @@ board.innerHTML = ''
 startBtn.addEventListener('click', (event) => {
     event.preventDefault()
     screens[0].classList.add('up')
+
+    let namevalue = name.value
+    name.classList.add('up')
+    if (namevalue === '') {
+        namevalue = 'Guest'
+    }
+    gamerName.innerHTML = namevalue
+    //console.log(name)
+    //console.log(namevalue)
+})
+
+gamerName.addEventListener('click', () => {
+    screens[0].classList.remove('up')
+    screens[1].classList.remove('up')
+    name.classList.remove('up')
 })
 
 timeList.addEventListener('click', event => {
@@ -102,9 +120,14 @@ function finishGame() {
     timeEl.parentNode.classList.add('hide')
     //setTime(time * 4)
     //btnRestart.classList.remove('hide')
+    if (bestScore <= score) {
+        bestScore = score
+    }
 
 
-    board.innerHTML = `<h1 class="unhide">Your score: <span class="primary">${score}</span></h1>`
+
+    board.innerHTML = `<h1 class="unhide">Your score: <span class="primary">${score}</span><p style="font-size:20px">Best score: <span class="primary">${bestScore}</span></p></h1>`
+
 
 
 
