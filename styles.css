@@ -100,3 +100,35 @@ h1 {
   border-radius: 50%;
   cursor: pointer;
 }
+.score-e{
+  right:0;
+  position:absolute;
+}
+
+.remaining{
+  left:0;
+}
+
+.tablo{
+  width: 100vw;
+}
+
+.input-name{
+  top:55%;
+  outline: none;
+  border:none;
+  color:white;
+  border-bottom: 1px solid white;
+  background: none;
+  position: absolute;
+}
+
+.input-name:hover{
+  color: #16D9E3;
+  border-color: #16D9E3;
+}
+
+.input-name.up {
+  margin-top: -100vh;
+}
+/* значек карандаша */
