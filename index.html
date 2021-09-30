@@ -11,8 +11,9 @@
 
 <body>
   <div class="screen">
-    <h1>Aim Training</h1>
-    <input type="text" class="input-name" placeholder="Enter your name">
+    <h1>Aim Training<br>
+      <input type="text" class="input-name" placeholder="Enter your name">
+    </h1>
     <a href="#" class="start" id="start">Начать игру</a>
   </div>
 
@@ -39,6 +40,7 @@
           1 мин
         </button>
       </li>
+      <!--<input type="color">-->
 
 
     </ul>
